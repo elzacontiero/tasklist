@@ -1,6 +1,6 @@
 
 import os
-from flask import Flask,render_template, request, json
+from flask import Flask, render_template, request, json
 from flask_mysqldb import MySQL
 
 
@@ -27,10 +27,19 @@ def sysdate():
 
 @app.route('/notes')
 def notes():
+
+    class Note(object):
+        def __init__(self, dbrow):
+            self.id = dbrow[0]
+            self.created = dbrow[1]
+            self.title = dbrow[2]
+            self.description = dbrow[3]
+
     cursor = mysql.connection.cursor()
     cursor.execute('select id,created,title,description from notes')
-    rows = cursor.fetchall() 
-    return json.dumps(rows)
+    rows = cursor.fetchall()
+    allnotes = [Note(row) for row in rows]
+    return render_template('notes.html', allnotes=allnotes)
 
 
 if __name__ == "__main__":

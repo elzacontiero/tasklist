@@ -1,0 +1,11 @@
+<!doctype html>
+<title>Notes</title>
+
+<h1>All Notes</h1>
+
+{% for note in allnotes %}
+  <h2>{{ note.title }}!</h2>
+  <p>Note #{{ note.id }}, Created: {{ note.created }}</p>
+  <p>{{ note.description }}</p>
+
+{% endfor %}

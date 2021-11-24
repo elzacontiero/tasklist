@@ -1,5 +1,6 @@
-<!doctype html>
-<title>Notes</title>
+{% extends "base.html" %}
+{% block title %}All Notes{% endblock %}
+{% block content %}
 
 <h1>All Notes</h1>
 
@@ -9,3 +10,4 @@
   <p>{{ note.description }}</p>
 
 {% endfor %}
+{% endblock %}

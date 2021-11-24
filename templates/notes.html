@@ -5,9 +5,11 @@
 <h1>All Notes</h1>
 
 {% for note in allnotes %}
-  <h2>{{ note.title }}!</h2>
-  <p>Note #{{ note.id }}, Created: {{ note.created }}</p>
-  <p>{{ note.description }}</p>
-
+  <div>
+    <h2>{{ note.title }}!</h2>
+    <p>Note #{{ note.id }}, Created: {{ note.created }}</p>
+    <p>Author: <b>{{ note.author }}</b></p>
+    <p>{{ note.description }}</p>
+  </div>
 {% endfor %}
 {% endblock %}

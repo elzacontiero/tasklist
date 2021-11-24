@@ -29,14 +29,15 @@ def sysdate():
 def notes():
 
     class Note(object):
-        def __init__(self, dbrow):
+        def __init__(self, dbrow):            
             self.id = dbrow[0]
             self.created = dbrow[1]
-            self.title = dbrow[2]
-            self.description = dbrow[3]
+            self.author = dbrow[2]
+            self.title = dbrow[3]
+            self.description = dbrow[4]
 
     cursor = mysql.connection.cursor()
-    cursor.execute('select id,created,title,description from notes')
+    cursor.execute('select id,created, author, title,description from notes')
     rows = cursor.fetchall()
     allnotes = [Note(row) for row in rows]
     return render_template('notes.html', allnotes=allnotes)

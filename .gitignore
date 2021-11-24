@@ -3,3 +3,5 @@ include
 lib
 lib64
 pip-selfcheck.json
+mysql.env
+pyvenv.cfg
